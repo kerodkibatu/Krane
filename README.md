@@ -1,5 +1,4 @@
-[[![NuGet version (SoftCircuits.Silk)](https://img.shields.io/nuget/v/SoftCircuits.Silk.svg?style=flat-square)](https://www.nuget.org/packages/SoftCircuits.Silk/)
-](https://img.shields.io/nuget/v/Krane)
+[![NuGet version (Krane)](https://img.shields.io/nuget/v/Krane.svg?style=flat-square)](https://www.nuget.org/packages/Krane)
 
 # Krane
 
