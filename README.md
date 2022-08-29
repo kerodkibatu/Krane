@@ -1,7 +1,7 @@
 # Krane
 
 Krane is a graphics framework for [C#](https://g.co/kgs/vxLHKK) built on top of [SFML.NET](https://github.com/SFML/SFML.Net)
-100% made with C#
+\n100% made with C#
 
 ## Installation
 
