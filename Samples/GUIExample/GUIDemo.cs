@@ -1,36 +1,48 @@
 ﻿using Krane.Core;
 using Krane.GUI;
+using Krane.GUI.Widgets;
 using SFML.Graphics;
 using SFML.System;
 
 namespace GUIExample;
 public class GUIDemo : Game
 {
-	Button Button;
-	Label Label;
+	Color backColor = Color.Black;
 	public GUIDemo():base("GUI Example")
 	{
-		Button = new("Click me!",new Vector2f(10,10));
-		Label = new("Hello World!", new Vector2f(50, 90));
-		Button.Clicked += (sender, _) => 
-		{
-			var btn = sender as Button;
 
-			btn?.SetFillColor(btn.BackColor!=Color.Red?Color.Red:Color.White,Color.Blue);
-			btn?.Label.SetText(btn?.DisplayedText != "Hello" ? "Bye" : "Hello");
-		};
 	}
 	public override void Initialize()
 	{
-
+		GUIManager
+			.AddGroup("main",
+			new WidgetGroup()
+			.AddWidget("btn-backtoggle", new Button("Toggle Background", new(10f, 10f), new(200f, 50f), Color.Green, Color.White, Color.White, 16)
+			{
+				Clicked = (sender, _) =>
+				{
+					(GUIManager.ActiveGroup?.GetWidget("cbox-backtoggle") as Checkbox)?.Toggle();
+				}
+			})
+			.AddWidget("cbox-backtoggle", new Checkbox("White BackGround", new(10f, 70f),60,FillColor:Color.Green,Outline:Color.Green,TextColor:Color.Blue)
+			{
+				StateChanged = (sender, _) =>
+				{
+					ToggleBackColor();
+				}
+			})
+			);
 	}
+	public void ToggleBackColor()
+	{
+        backColor = backColor == Color.Black ? Color.White : Color.Black;
+    }
 	public override void Update()
 	{
-		Button.Update();
+
 	}
 	public override void Draw()
 	{
-		Button.Draw();
-		Label.Draw();
+		Render.Clear(backColor);
 	}
 }
