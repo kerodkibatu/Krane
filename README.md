@@ -1,4 +1,5 @@
-[![NuGet version (Krane)](https://img.shields.io/nuget/v/Krane.svg?style=flat-square)](https://www.nuget.org/packages/Krane)
+[![NuGet version (Krane)](https://img.shields.io/nuget/v/Krane.svg)](https://www.nuget.org/packages/Krane)
+![GitHub](https://img.shields.io/github/license/Ker-Verse/Krane)
 
 # Krane
 
