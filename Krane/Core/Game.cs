@@ -1,5 +1,7 @@
+using Krane.Interactive;
+
 namespace Krane.Core;
-public class Game : IDisposable
+public abstract class Game : IDisposable
 {
     public static bool DEBUG = false;
     private RenderWindow Window;
@@ -16,17 +18,18 @@ public class Game : IDisposable
         
         SetFPSLimit(FPSLimit);
         Render.SetTarget(Window);
+        Input.SetWindow(Window);
     }
     public void SetFPSLimit(uint Limit)
     {
         Window.SetFramerateLimit(Limit);
     }
+    public void SetTitle(string newTitle)
+    { 
+        Window.SetTitle(newTitle);
+    }
     public void Start()
     {
-        if (Window.IsOpen)
-        {
-            Window.Close();
-        }
         Window.Closed += (_, _) => Window.Close();
         Window.Resized += (_, e) => Window.Size = new(e.Width, e.Height);
 
@@ -41,11 +44,10 @@ public class Game : IDisposable
         }
     }
 
-    public virtual void Initialize(){}
+    public abstract void Initialize();
+    public abstract void Update();
+    public abstract void Draw();
 
-    public virtual void Update(){}
-    public virtual void Draw(){}
-
-    public void Dispose() => Window.Dispose();
+    public void Dispose() => GC.SuppressFinalize(this);
 }
 
