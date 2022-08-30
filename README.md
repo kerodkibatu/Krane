@@ -33,7 +33,7 @@ class MyGame : Game
   }
   public override void Update()
   {
-    SetTitle(GameTime.deltaTime.AsSeconds());  
+    SetTitle(GameTime.totalTime.AsSeconds());  
   }
   public override void Draw()
   {
