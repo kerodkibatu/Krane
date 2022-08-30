@@ -47,8 +47,5 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 Please make sure to update tests as appropriate.
 
-## Language Usage
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=Ker-Verse&layout=compact&theme=dark)](https://github.com/Ker-Verse/Krane)
-
 ## License
 [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.txt)
