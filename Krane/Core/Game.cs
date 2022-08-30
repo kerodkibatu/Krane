@@ -1,3 +1,4 @@
+using Krane.GUI;
 using Krane.Interactive;
 
 namespace Krane.Core;
@@ -39,7 +40,9 @@ public abstract class Game : IDisposable
             Window.DispatchEvents();
             GameTime.Tick();
             Update();
+            GUIManager.Update();
             Draw();
+            GUIManager.Draw();
             Window.Display();
         }
     }
