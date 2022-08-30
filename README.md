@@ -33,10 +33,11 @@ class MyGame : Game
   }
   public override void Update()
   {
-    SetTitle(GameTime.totalTime.AsSeconds());  
+    SetTitle(GameTime.totalTime);  
   }
   public override void Draw()
   {
+    Render.Clear();
     Render.Draw(new CircleShape(200));
   }
 }
