@@ -14,14 +14,15 @@ public class Label : Widget
     public string DisplayedText => Text.DisplayedString;
     public Color FillColor => Text.FillColor;
     public Color OutlineColor => Text.OutlineColor;
-    public Label(string text, Vector2f Position, bool Centered = false, Color? FillColor = null, Color? Outline = null)
+    public Label(string text, Vector2f Position, bool Centered = false, Color? FillColor = null, Color? Outline = null,uint TextSize = 32)
     {
         this.Centered = Centered;
         Text = new Text(text, FontManager.Default)
         {
             FillColor = FillColor ?? Color.White,
             OutlineColor = Outline ?? Color.Transparent,
-            OutlineThickness = 1
+            OutlineThickness = 1,
+            CharacterSize = TextSize
         };
         Text.Position = Position;
         CenterText();
@@ -31,7 +32,7 @@ public class Label : Widget
         if (!Centered)
             return;
         var textBound = Text.GetLocalBounds();
-        Text.Origin = new Vector2f(textBound.Width, textBound.Height+15f) / 2;
+        Text.Origin = new Vector2f(textBound.Width, textBound.Height+5f) / 2;
     }
     public void SetTextColor(Color Fill, Color? Outline = null)
     {
@@ -53,10 +54,7 @@ public class Label : Widget
         Text.DisplayedString = str;
         CenterText();
     }
-    public override void Update()
-    {
-
-    }
+    public override void Update() { }
     public override void Draw()
     {
         if (!Visible)

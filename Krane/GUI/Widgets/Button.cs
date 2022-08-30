@@ -17,7 +17,7 @@ public class Button : Widget
     public EventHandler? Clicked { get; set; }
     public Color BackColor => Rectangle.FillColor;
     public Color ForeColor => Label.FillColor;
-    public Button(string text, Vector2f Position, Vector2f? Size = null, Color? FillColor = null, Color? Outline = null,Color? TextColor = null)
+    public Button(string text, Vector2f Position, Vector2f? Size = null, Color? FillColor = null, Color? Outline = null,Color? TextColor = null,uint TextSize = 32)
     {
         Rectangle = new(Size ?? DefaultSize)
         {
@@ -26,9 +26,9 @@ public class Button : Widget
             OutlineColor = Outline ?? Color.Transparent,
             OutlineThickness = 1
         };
-        Label = new(text, Rectangle.Position+Rectangle.Size/2f,true,FillColor:TextColor);
+        Label = new(text, Rectangle.Position+Rectangle.Size/2f,true,FillColor:TextColor,TextSize: TextSize);
     }
-    public void SetFillColor(Color Fill, Color? Outline = null)
+    public void SetColor(Color Fill, Color? Outline = null)
     {
         Rectangle.FillColor = Fill;
         Rectangle.OutlineColor = Outline ?? Color.Transparent;
