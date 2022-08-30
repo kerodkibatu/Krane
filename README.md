@@ -1,4 +1,5 @@
-[![NuGet version (Krane)](https://img.shields.io/nuget/v/Krane.svg?style=flat-square)](https://www.nuget.org/packages/Krane)
+[![NuGet version (Krane)](https://img.shields.io/nuget/v/Krane.svg)](https://www.nuget.org/packages/Krane)
+[![GitHub](https://img.shields.io/github/license/Ker-Verse/Krane)](https://www.gnu.org/licenses/gpl-3.0.txt)
 
 # Krane
 
@@ -32,11 +33,12 @@ class MyGame : Game
   }
   public override void Update()
   {
-    SetTitle(GameTime.deltaTime.AsSeconds());  
+    SetTitle(GameTime.totalTime);  
   }
   public override void Draw()
   {
-    Render.Target.Draw(new CircleShape(200));
+    Render.Clear();
+    Render.Draw(new CircleShape(200));
   }
 }
 ```
@@ -45,9 +47,6 @@ class MyGame : Game
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 Please make sure to update tests as appropriate.
-
-## Language Usage
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=Ker-Verse&layout=compact&theme=dark)](https://github.com/Ker-Verse/Krane)
 
 ## License
 [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.txt)
