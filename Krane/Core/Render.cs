@@ -8,9 +8,9 @@ public static class Render
     {
         Target = target;
     }
-    public static void Clear()
+    public static void Clear(Color? c = null)
     {
-        Target?.Clear();
+        Target?.Clear(c??Color.Black);
     }
     public static void Draw(Drawable drawable)
     {
