@@ -2,11 +2,11 @@
 using Krane.Resources;
 using Krane.Interactive;
 
-namespace Krane.GUI;
+namespace Krane.GUI.Widgets;
 public class Button : Widget
 {
-    public static Vector2f DefaultSize = new(150,50);
-    
+    public static Vector2f DefaultSize = new(150, 50);
+
     RectangleShape Rectangle;
     bool wasClicked = false;
 
@@ -17,7 +17,7 @@ public class Button : Widget
     public EventHandler? Clicked { get; set; }
     public Color BackColor => Rectangle.FillColor;
     public Color ForeColor => Label.FillColor;
-    public Button(string text,Vector2f Position,Vector2f? Size = null,Color? FillColor = null,Color? Outline = null)
+    public Button(string text, Vector2f Position, Vector2f? Size = null, Color? FillColor = null, Color? Outline = null,Color? TextColor = null)
     {
         Rectangle = new(Size ?? DefaultSize)
         {
@@ -26,28 +26,28 @@ public class Button : Widget
             OutlineColor = Outline ?? Color.Transparent,
             OutlineThickness = 1
         };
-        Label = new(text,Rectangle.Position);
+        Label = new(text, Rectangle.Position+Rectangle.Size/2f,true,FillColor:TextColor);
     }
-    public void SetFillColor(Color Fill,Color? Outline = null)
+    public void SetFillColor(Color Fill, Color? Outline = null)
     {
         Rectangle.FillColor = Fill;
         Rectangle.OutlineColor = Outline ?? Color.Transparent;
     }
-    public void SetTextColor(Color Fill,Color? Outline = null)
+    public void SetTextColor(Color Fill, Color? Outline = null)
     {
         Label.SetTextColor(Fill, Outline);
     }
-    public void Update()
+    public override void Update()
     {
         if (!Visible)
             return;
         var MousePos = Input.GetMousePosition();
-        if (Rectangle.GetGlobalBounds().Contains(MousePos.X,MousePos.Y)&&Input.isMousePressed(Mouse.Button.Left)&&!wasClicked)
+        if (Rectangle.GetGlobalBounds().Contains(MousePos.X, MousePos.Y) && Input.isMousePressed(Mouse.Button.Left) && !wasClicked)
         {
             Clicked?.Invoke(this, new());
             wasClicked = true;
         }
-        else if(!Input.isMousePressed(Mouse.Button.Left))
+        else if (!Input.isMousePressed(Mouse.Button.Left))
         {
             wasClicked = false;
         }

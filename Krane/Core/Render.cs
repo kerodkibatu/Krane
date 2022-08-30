@@ -8,6 +8,15 @@ public static class Render
     {
         Target = target;
     }
+    public static void Clear()
+    {
+        Target?.Clear();
+    }
+    public static void Draw(Drawable drawable)
+    {
+        Target?.Draw(drawable);
+    }
+
 }
 
 
