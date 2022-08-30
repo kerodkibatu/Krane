@@ -37,7 +37,7 @@ class MyGame : Game
   }
   public override void Draw()
   {
-    Render.Target.Draw(new CircleShape(200));
+    Render.Draw(new CircleShape(200));
   }
 }
 ```
