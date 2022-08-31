@@ -7,15 +7,21 @@ public class Checkbox : Widget
     public static uint DefaultSize = 32;
     public override bool Visible { get; set; } = true;
     bool wasClicked = false;
-    public override Vector2f Position => throw new NotImplementedException();
+    bool _checked = false;
 
 
+    public override Vector2f Position => ToggleArea.Position;
     public EventHandler<bool>? StateChanged { get; set; }
     public RectangleShape ToggleArea;
     public RectangleShape Indicator;
-    bool _checked = false;
+
+
     public bool Checked { get { return _checked; } set { StateChanged?.Invoke(this, _checked = value); } }
-    Label Label;
+
+    public override Color FillColor { get => Indicator.FillColor; set => Indicator.FillColor = value; }
+    public override Color OutlineColor { get => ToggleArea.OutlineColor; set => ToggleArea.OutlineColor = value; }
+
+    public Label Label;
     public Checkbox(string text, Vector2f Position, uint? Size = null, Color? FillColor = null, Color? Outline = null, Color? TextColor = null)
     {
         ToggleArea = new(new Vector2f(Size??DefaultSize, Size??DefaultSize))
@@ -28,7 +34,7 @@ public class Checkbox : Widget
         Indicator = new(ToggleArea.Size * 0.9f)
         {
             Position = ToggleArea.Position+ToggleArea.Size/2f,
-            FillColor = FillColor??Color.White
+            FillColor = FillColor??Color.White,
         };
         Indicator.Origin = Indicator.Size / 2f;
         Label = new(text, new(Position.X + ToggleArea.Size.X * 1.05f, Position.Y),FillColor:TextColor,TextSize:Size??DefaultSize);
@@ -42,12 +48,12 @@ public class Checkbox : Widget
         if (!Visible)
             return;
         var MousePos = Input.GetMousePosition();
-        if (ToggleArea.GetGlobalBounds().Contains(MousePos.X, MousePos.Y) && Input.isMousePressed(Mouse.Button.Left) && !wasClicked)
+        if (ToggleArea.GetGlobalBounds().Contains(MousePos.X, MousePos.Y) && Input.IsButtonPressed(Mouse.Button.Left) && !wasClicked)
         {
             Toggle();
             wasClicked = true;
         }
-        else if (!Input.isMousePressed(Mouse.Button.Left))
+        else if (!Input.IsButtonPressed(Mouse.Button.Left))
         {
             wasClicked = false;
         }
