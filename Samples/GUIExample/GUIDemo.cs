@@ -24,7 +24,7 @@ public class GUIDemo : Game
 					(GUIManager.ActiveGroup?.GetWidget("cbox-backtoggle") as Checkbox)?.Toggle();
 				}
 			})
-			.AddWidget("cbox-backtoggle", new Checkbox("White BackGround", new(10f, 70f),60,FillColor:Color.Green,Outline:Color.Green,TextColor:Color.Blue)
+			.AddWidget("cbox-backtoggle", new Checkbox("White BackGround", new(10f, 70f),FillColor:Color.Green,Outline:Color.Green,TextColor:Color.Blue)
 			{
 				StateChanged = (sender, _) =>
 				{
