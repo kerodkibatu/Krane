@@ -1,18 +1,18 @@
-﻿namespace Krane.Interactive;
+﻿using Krane.Core;
+
+namespace Krane.Interactive;
 public static class Input
 {
-	static Window? Window;
-	internal static void SetWindow(Window window)
+	public static Vector2f GetMousePosition()
 	{
-		Window = window;
+		return Render.Target!.MapPixelToCoords(Mouse.GetPosition((Window?)Render.Target));
 	}
-	public static Vector2i GetMousePosition()
-	{
-		return Mouse.GetPosition(Window);
-	}
-	public static bool isMousePressed(Mouse.Button button)
+	public static bool IsButtonPressed(Mouse.Button button)
 	{
 		return Mouse.IsButtonPressed(button);
 	}
-
+	public static bool IsKeyPressed(Keyboard.Key key)
+	{
+		return Keyboard.IsKeyPressed(key);
+	}
 }
