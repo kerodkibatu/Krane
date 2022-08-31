@@ -19,7 +19,6 @@ public abstract class Game : IDisposable
         
         SetFPSLimit(FPSLimit);
         Render.SetTarget(Window);
-        Input.SetWindow(Window);
     }
     public void SetFPSLimit(uint Limit)
     {
