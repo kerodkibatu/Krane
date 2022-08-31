@@ -1,6 +1,8 @@
-﻿using Krane.Core;
+﻿using Krane;
+using Krane.Core;
 using Krane.GUI;
 using Krane.GUI.Widgets;
+using Krane.Interactive;
 using SFML.Graphics;
 using SFML.System;
 
@@ -30,6 +32,10 @@ public class GUIDemo : Game
 				{
 					ToggleBackColor();
 				}
+			})
+			.AddWidget("sdr-slider",new Slider("",new Vector2f(10,120),new Vector2f(50,20))
+			{
+
 			})
 			);
 	}
