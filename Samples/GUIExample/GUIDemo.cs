@@ -33,9 +33,9 @@ public class GUIDemo : Game
 					ToggleBackColor();
 				}
 			})
-			.AddWidget("sdr-slider",new Slider("",new Vector2f(10,120),new Vector2f(50,20))
+			.AddWidget("sdr-slider",new Slider(0,10,new Vector2f(10,120))
 			{
-
+				ValueChanged = (sender, val) => { SetTitle(val.ToString()); }
 			})
 			);
 	}
