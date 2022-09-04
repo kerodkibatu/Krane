@@ -1,22 +1,16 @@
-using Krane.GUI;
+using Krane.Interactive.GUI;
 using Krane.Interactive;
 
 namespace Krane.Core;
 public abstract class Game : IDisposable
 {
-    public static bool DEBUG = false;
     private RenderWindow Window;
-
-
-
     public View DefaultView => Window.GetView();
-
-
-    public Game(string Title = "", uint Width = 640, uint Height = 480, uint FPSLimit = 60, bool Debug = false)
+    public uint WIDTH, HEIGHT;
+    public Game(string Title = "", uint Width = 640, uint Height = 480, uint FPSLimit = 60)
     {
-        DEBUG = Debug;
+        (WIDTH, HEIGHT) = (Width,Height);
         Window = new(new(Width, Height), Title);
-        
         SetFPSLimit(FPSLimit);
         Render.SetTarget(Window);
     }
@@ -38,11 +32,13 @@ public abstract class Game : IDisposable
         {
             Window.DispatchEvents();
             GameTime.Tick();
-            Update();
             GUIManager.Update();
+            Input.Update();
+            Update();
             Draw();
             GUIManager.Draw();
             Window.Display();
+            Input.ResetDeltas();
         }
     }
 

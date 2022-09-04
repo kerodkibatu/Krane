@@ -3,7 +3,7 @@ namespace Krane.Core;
 
 public static class Render
 {
-    public static RenderTarget? Target;
+    public static RenderWindow? Target;
     public static Vector2f ToWorldSpace(Vector2i screenSpace)
     {
         return Target!.MapPixelToCoords(screenSpace);
@@ -12,7 +12,7 @@ public static class Render
     {
         return Target!.MapCoordsToPixel(worldSpace);
     }
-    public static void SetTarget(RenderTarget target)
+    public static void SetTarget(RenderWindow target)
     {
         Target = target;
     }
