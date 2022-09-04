@@ -4,7 +4,9 @@
 # Krane
 
 Krane is a graphics framework for [C#](https://g.co/kgs/vxLHKK) built on top of [SFML.NET](https://github.com/SFML/SFML.Net)
-
+It allows for fast and reliable graphics rendering on Windows.
+## Dependencies
+- [SFML.NET](https://github.com/SFML/SFML.Net)
 ## Installation
 
 ```powershell
@@ -42,6 +44,13 @@ class MyGame : Game
   }
 }
 ```
+## Roadmap
+### GUI
+- Custom Textures for Buttons and Widgets
+- Complete GUI system
+### New Features
+- Cameras
+- Collision Detection
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
