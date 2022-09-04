@@ -14,15 +14,21 @@
     <PackageIcon></PackageIcon>
     <RepositoryUrl>https://github.com/Ker-Verse/Krane</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageTags>game framework;SFML.NET;game engine;media library;games;game dev;opengl;vulkan;gui;</PackageTags>
+    <PackageTags>game-framework;SFML.NET;game-engine;media-library;games;game-dev;opengl;vulkan;gui;</PackageTags>
     <Copyright>Copyright© KerVerse 2022 Licensed under GNU General Public License v3.0</Copyright>
-    <Version>0.2.2-alpha</Version>
+    <Version>0.3.0-alpha</Version>
     <Description>Krane is a graphics framework for C# built on top of SFML.NET. It allows for fast and reliable graphics rendering on Windows. The core functionality is based on a .NET port of SFML (Simple Fast Multimedia Library). Krane can create a window with custom functions to control FPS, Set Title and many more upcoming  features. Krane can even be used to make games . This project has been tested with .NET6 and is compatible with .NET Standard  2.0 ,You can find the repository on https://www.github.com/Ker-Verse/Krane . You can find a README for the project in the GitHub repo.</Description>
-    <PackageReleaseNotes>-Added Utility methods to Render class
--Added Slider
--Refactored Input system
--Added Keyboard support to Input class</PackageReleaseNotes>
-    <PackageOutputPath>.\nuget\</PackageOutputPath>
+    <PackageReleaseNotes>What’s new 
+- Refactored input class
+- Added knob to slider
+
+Bug Fixes and Improvements 
+- fixed slider value ahead of selection
+
+Coming Soon
+- Panel widget
+</PackageReleaseNotes>
+    <PackageOutputPath>..\nuget\</PackageOutputPath>
   </PropertyGroup>
 
   <ItemGroup>
