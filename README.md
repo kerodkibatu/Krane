@@ -43,8 +43,10 @@ class MyGame : Game
 }
 ```
 ## Roadmap
+### GUI
 - Custom Textures for Buttons and Widgets
 - Complete GUI system
+### New Features
 - Cameras
 - Collision Detection
 
