@@ -5,6 +5,8 @@
 
 Krane is a graphics framework for [C#](https://g.co/kgs/vxLHKK) built on top of [SFML.NET](https://github.com/SFML/SFML.Net)
 It allows for fast and reliable graphics rendering on Windows.
+## Dependencies
+- [SFML.NET](https://github.com/SFML/SFML.Net)
 ## Installation
 
 ```powershell
