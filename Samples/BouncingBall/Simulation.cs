@@ -62,7 +62,5 @@ public class Simulation : Game
         }
         var velLine = new LineShape(ball.Position, ball.Position + vel * 5f, Color.Blue, Color.Green, 2);
         Render.Draw(velLine);
-        var vb = velLine.GetGlobalBounds();
-        Render.Draw(new RectangleShape(new Vector2f(vb.Width, vb.Height)) { Position = new(vb.Left,vb.Top)});
     }
 }
