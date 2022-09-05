@@ -13,6 +13,7 @@ public abstract class Game : IDisposable
         Window = new(new(Width, Height), Title);
         SetFPSLimit(FPSLimit);
         Render.SetTarget(Window);
+
     }
     public void SetFPSLimit(uint Limit)
     {
@@ -26,7 +27,6 @@ public abstract class Game : IDisposable
     {
         Window.Closed += (_, _) => Window.Close();
         Window.Resized += (_, e) => Window.Size = new(e.Width, e.Height);
-
         Initialize();
         while (Window.IsOpen)
         {
@@ -41,11 +41,9 @@ public abstract class Game : IDisposable
             Input.ResetDeltas();
         }
     }
-
     public abstract void Initialize();
     public abstract void Update();
     public abstract void Draw();
-
     public void Dispose() => GC.SuppressFinalize(this);
 }
 
