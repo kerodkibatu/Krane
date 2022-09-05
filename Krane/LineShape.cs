@@ -52,10 +52,7 @@ namespace Krane
             target.Draw(vertices, PrimitiveType.Quads,states);
         }
 
-        public override uint GetPointCount()
-        {
-            return 4;
-        }
+        public override uint GetPointCount() => 4;
 
         public override Vector2f GetPoint(uint index)
         {
