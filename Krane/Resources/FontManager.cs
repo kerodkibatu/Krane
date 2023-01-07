@@ -3,25 +3,13 @@
 namespace Krane.Resources;
 public static class FontManager
 {
-    static string BasePath;
-    public static Font? Default;
-    static Dictionary<string, Font> Fonts;
-    static FontManager()
-    {
-        Fonts = new();
-        BasePath = "C:\\Windows\\Fonts";
-        Default = new("C:\\Windows\\Fonts\\CascadiaMono.ttf");
-    }
-    public static void Initialize(string basePath)
-    {
-        BasePath = basePath;
-    }
-    public static void Load(string name, string ext = "ttf")
-    {
-        Fonts.Add(name, new Font(Path.Combine(BasePath, name + "." + ext)));
-    }
-    public static void UnLoad(string name)
-    {
-        Fonts.Remove(name);
-    }
+    static string BasePath = "C:\\Windows\\Fonts";
+    public static Font? Active = new ("C:\\Windows\\Fonts\\CascadiaMono.ttf");
+    static Dictionary<string, Font> Fonts = new();
+    public static void SetBasePath(string basePath) => BasePath = basePath;
+    public static void Load(string alias, string fName) => Fonts.Add(alias, new Font(File.ReadAllBytes(Path.Combine(BasePath, fName))));
+    public static void Remove(string alias) => Fonts.Remove(alias);
+    public static void SetActive(string alias) => Active = Get(alias);
+    public static Font Get(string alias) => Fonts[alias] ?? throw new KeyNotFoundException($"Font '{alias}' not found");
+    public static Font GetFromFile(string fName) => new Font(File.ReadAllBytes(Path.Combine(BasePath, fName)));
 }

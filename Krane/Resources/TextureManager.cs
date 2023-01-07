@@ -1,31 +1,13 @@
 ﻿namespace Krane.Resources;
 static class TextureManager
 {
-    static string BasePath;
-    static Dictionary<string, Texture> Textures;
-    static TextureManager()
-    {
-        Textures = new();
-        BasePath = Directory.GetCurrentDirectory();
-    }
-
-    public static void Initialize(string basePath)
-    {
-        BasePath = basePath;
-    }
-    public static void Load(string name, string ext = "png")
-    {
-        Textures.Add(name, new Texture(Path.Combine(BasePath, name + $".{ext}")));
-    }
-    public static void Unload(string name)
-    {
-        Textures.Remove(name);
-    }
-
-    public static Texture Get(string name)
-    {
-        return Textures[name] ?? throw new KeyNotFoundException($"\"{name}\" Not Found");
-    }
+    static string BasePath = Directory.GetCurrentDirectory();
+    static Dictionary<string, Texture> Textures = new();
+    public static void SetBasePath(string basePath) => BasePath = basePath;
+    public static void Load(string alias, string fName) => Textures.Add(alias, new Texture(File.ReadAllBytes(Path.Combine(BasePath, fName))));
+    public static void Remove(string alias) => Textures.Remove(alias);
+    public static Texture Get(string alias) => Textures[alias] ?? throw new KeyNotFoundException($"Texture '{alias}' not found");
+    public static Texture GetFromFile(string fName) => new Texture(File.ReadAllBytes(Path.Combine(BasePath, fName)));
 }
 
 
