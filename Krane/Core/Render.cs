@@ -9,7 +9,6 @@ public static class Render
     public static void Clear() => Target?.Clear();
     public static void Clear(Color c) => Target?.Clear(c);
     public static void Draw(Drawable drawable) => Target?.Draw(drawable);
-
 }
 
 

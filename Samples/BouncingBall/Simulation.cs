@@ -1,5 +1,6 @@
 ﻿using Krane.Core;
 using Krane.Extensions;
+using Krane.Resources;
 using SFML.Graphics;
 using SFML.System;
 using SFML.Window;
@@ -36,6 +37,9 @@ public class Simulation : Game
     public override void Draw()
     {
         Render.Clear();
+        // Add Help Text
+        var helpText = new Text("Click and drag to apply force", FontManager.Active, 20).SetPosition(10, 10);
+        Render.Draw(helpText);
         if (Input.IsMouseDown(Mouse.Button.Left))
         {
             var forceLine = new LineShape(ball.Position, Input.MousePos, startColor:Color.Green, endColor:Color.Red);
