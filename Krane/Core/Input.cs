@@ -16,7 +16,7 @@ public static class Input
         InitializeKeyStates();
         var Window = Render.Target!;
         Window.MouseWheelScrolled += (_, e) => DScroll = (int)e.Delta;
-        Window.MouseMoved += (_, e) => DMouse = (Render.ToWorldSpace(new Vector2i(e.X, e.Y)) - MousePos) / GameTime.DeltaTime.AsSeconds();
+        Window.MouseMoved += (_, e) => DMouse = (new Vector2f(e.X, e.Y) - MousePos) / GameTime.DeltaTime.AsSeconds();
     }
 
     public static bool IsMouseDown(Button button)
