@@ -12,8 +12,17 @@ public class Label : Widget
     public override bool Visible { get; set; } = true;
     public override Vector2f Position => Text.Position;
     public string DisplayedText => Text.DisplayedString;
-    public Color FillColor => Text.FillColor;
-    public Color OutlineColor => Text.OutlineColor;
+    public Color FillColor 
+    { 
+        get => Text.FillColor; 
+        set => Text.FillColor = value; 
+    }
+    public Color OutlineColor
+    {
+        get => Text.OutlineColor;
+        set => Text.OutlineColor = value;
+    }
+
     public Label(string text, Vector2f Position, bool Centered = false, Color? FillColor = null, Color? Outline = null,uint TextSize = 32)
     {
         this.Centered = Centered;
@@ -25,9 +34,9 @@ public class Label : Widget
             CharacterSize = TextSize
         };
         Text.Position = Position;
-        CenterText();
+        //CenterText();
     }
-    void CenterText()
+    public void CenterText()
     {
         if (!Centered)
             return;
@@ -42,17 +51,17 @@ public class Label : Widget
     public void SetTextSize(uint Size)
     {
         Text.CharacterSize = Size;
-        CenterText();
+        //CenterText();
     }
     public void SetFont(Font font)
     {
         Text.Font = font;
-        CenterText();
+        //CenterText();
     }
     public void SetText(string str)
     {
         Text.DisplayedString = str;
-        CenterText();
+        //CenterText();
     }
     public override void Update() { }
     public override void Draw()

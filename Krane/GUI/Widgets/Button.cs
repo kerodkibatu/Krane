@@ -27,6 +27,7 @@ public class Button : Widget
             OutlineThickness = 1
         };
         Label = new(text, Rectangle.Position+Rectangle.Size/2f,true,FillColor:TextColor,TextSize: TextSize);
+        Label.CenterText();
     }
     public void SetColor(Color Fill, Color? Outline = null)
     {
@@ -44,7 +45,7 @@ public class Button : Widget
         var MousePos = Input.GetMousePosition();
         if (Rectangle.GetGlobalBounds().Contains(MousePos.X, MousePos.Y) && Input.isMousePressed(Mouse.Button.Left) && !wasClicked)
         {
-            Clicked?.Invoke(this, new());
+            Clicked?.Invoke(this, null);
             wasClicked = true;
         }
         else if (!Input.isMousePressed(Mouse.Button.Left))
