@@ -1,3 +1,6 @@
+using Krane.GUI;
+using Krane.ParticleSystem;
+
 namespace Krane.Core;
 public abstract class Game : IDisposable
 {
@@ -39,8 +42,12 @@ public abstract class Game : IDisposable
             Window.DispatchEvents();
             GameTime.Tick();
             Input.Update();
+            ParticleSystem.ParticleSystem.Update();
             Update();
+            GUIManager.Update();
+            ParticleSystem.ParticleSystem.Draw();
             Draw();
+            GUIManager.Draw();
             Window.Display();
             Input.ResetDeltas();
         }
