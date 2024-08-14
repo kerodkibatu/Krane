@@ -82,10 +82,11 @@ public class Simulation : Game
 ```
 ## Roadmap
 ### GUI
-- Custom Textures for Buttons and Widgets
-- Complete GUI system
+- Revamp GUI System
+- Replace with ImGui
 ### New Features
 - Cameras
+- 2D Physics
 - Collision Detection
 
 ## Contributing
